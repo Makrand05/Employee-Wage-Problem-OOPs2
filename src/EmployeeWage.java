@@ -4,14 +4,22 @@ public class EmployeeWage {
     int RATE_PER_HOUR = 20;
     int DAY_HOURS = 8;
     int wage = 0;
+    int PART_TIME = 2;
+    int FULL_TIME = 1;
+    int empHours = 0;
 
+    //Check whether the employee is present or not
     private void checkStatus() {
 
-        this.status = ((int) (Math.random() * 10) % 2);
-        if (status == 1) {
-            System.out.println("Employee is present");
-        } else
-            System.out.println("Employee is absent");
+        this.status = ((int) (Math.random() * 10) % 3);
+        if (status == FULL_TIME) {
+            //System.out.println("Employee is present");
+            empHours = DAY_HOURS;
+        } else if (status == PART_TIME)
+            //System.out.println("Employee is absent");
+            empHours = 4;
+        else
+            empHours = 0;
     }
 
     public static void main(String[] args) {
@@ -23,13 +31,10 @@ public class EmployeeWage {
 
     }
 
+    //Calculated Employ wage
     private void calculateDailyWage() {
-        if(status==1){
-            wage=DAY_HOURS*RATE_PER_HOUR;
-        }
-        else
-            wage=0;
-        System.out.println("Total Wage of Employee is : "+wage);
+        wage = empHours * RATE_PER_HOUR;
+        System.out.println("Total Wage of Employee is : " + wage);
     }
 
 
