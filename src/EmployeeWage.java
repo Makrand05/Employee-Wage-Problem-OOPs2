@@ -4,7 +4,7 @@ public class EmployeeWage {
 
     int status;
     int RATE_PER_HOUR = 20;
-    int DAY_HOURS = 8;
+    int MAX_WORKING_HOURS = 100;
     int wage = 0;
     final int PART_TIME = 2;
     final int FULL_TIME = 1;
@@ -37,7 +37,7 @@ public class EmployeeWage {
 
     private void wageForMonth() {
         int day=0;
-        while (day<workingDayInMonth) {
+        while (day<workingDayInMonth && totalWorkingHours<MAX_WORKING_HOURS) {
             if(checkStatus()>0){
             totalMonthlyWage += calculateDailyWage();}
             day++;
