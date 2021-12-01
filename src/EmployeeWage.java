@@ -31,7 +31,6 @@ public class EmployeeWage {
         }
         return empHours;
     }
-
     //Calculated Employ wage
     private int calculateDailyWage() { return (empHours * RATE_PER_HOUR);   }
 
@@ -51,15 +50,9 @@ public class EmployeeWage {
     }
 
     public static void main(String[] args) {
-
         EmployeeWage employeeWage = new EmployeeWage();
-
         employeeWage.calculateDailyWage();
         employeeWage.wageForMonth();
         employeeWage.printOutput();
-
-
     }
-
-
 }
