@@ -55,8 +55,6 @@ public class EmployeeWage {
 
     private void printOutput() {
         System.out.println("Total employee wage for Company "+compName+" is "+totalMonthlyWage);
-//        System.out.println("Total Working Hours in month is : " + totalWorkingHours);
-//        System.out.println("Total employee wage in month : " + totalMonthlyWage);
     }
 
     public static void main(String[] args) {
