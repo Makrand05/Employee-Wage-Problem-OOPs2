@@ -1,10 +1,13 @@
+import org.checkerframework.common.value.qual.ArrayLen;
 import org.openqa.selenium.json.JsonOutput;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EmployeeWage {
 
     int status;
+    String compName;
     int RATE_PER_HOUR;
     int MAX_WORKING_HOURS;
     final int PART_TIME = 2;
@@ -13,7 +16,9 @@ public class EmployeeWage {
     int totalMonthlyWage = 0;
     int workingDayInMonth;
     int totalWorkingHours = 0;
-    EmployeeWage(int workingRate, int workingHoursInMonth, int workingDayInMonth){
+
+    EmployeeWage(String name, int workingRate, int workingHoursInMonth, int workingDayInMonth){
+        this.compName=name;
     this.RATE_PER_HOUR=workingRate;
     this.MAX_WORKING_HOURS=workingHoursInMonth;
     this.workingDayInMonth=workingDayInMonth;
@@ -49,22 +54,21 @@ public class EmployeeWage {
     }
 
     private void printOutput() {
-        System.out.println("Total Working Hours in month is : " + totalWorkingHours);
-        System.out.println("Total employee wage in month : " + totalMonthlyWage);
+        System.out.println("Total employee wage for Company "+compName+" is "+totalMonthlyWage);
+//        System.out.println("Total Working Hours in month is : " + totalWorkingHours);
+//        System.out.println("Total employee wage in month : " + totalMonthlyWage);
     }
 
     public static void main(String[] args) {
         //for the working hour rate 20, working hour in month- 100 working hour in month 20
-        Scanner sc=new Scanner(System.in);
-        System.out.print("Enter the Working day in month : ");
-        int workingDayInMonth=sc.nextInt();
-        System.out.print("Enter the Hours day in month : ");
-        int workingHoursInmonth=sc.nextInt();
-        System.out.print("Enter the rate per hours: ");
-        int ratePerHours=sc.nextInt();
-        EmployeeWage employeeWage = new EmployeeWage(ratePerHours,workingHoursInmonth,workingDayInMonth);
-        employeeWage.calculateDailyWage();
-        employeeWage.wageForMonth();
-        employeeWage.printOutput();
+      
+        EmployeeWage abc= new EmployeeWage("ABC",20,100,20);
+        abc.calculateDailyWage();
+        abc.wageForMonth();
+        abc.printOutput();
+        EmployeeWage apple=new EmployeeWage("Apple",25,120,25);
+        apple.calculateDailyWage();
+        apple.wageForMonth();
+        apple.printOutput();
     }
 }
