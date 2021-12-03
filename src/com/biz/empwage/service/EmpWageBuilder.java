@@ -1,6 +1,9 @@
-package com.biz.empwage;
+package com.biz.empwage.service;
 
-public class EmpWageBuilder {
+import com.biz.empwage.interface1.IEmployeeWage;
+import com.biz.empwage.model.CompanyEmpWage;
+
+public class EmpWageBuilder implements IEmployeeWage {
 
     int status;
 
@@ -14,22 +17,22 @@ public class EmpWageBuilder {
     int noOfCompany = 0;
 
     public static void main(String[] args) {
-        //for the working hour rate 20, working hour in month- 100 working hour in month 20
 
-        EmpWageBuilder empWageBuilder = new EmpWageBuilder();
+
+        IEmployeeWage empWageBuilder = new EmpWageBuilder();
         empWageBuilder.addCompanyEmpWage("ABC", 20, 100, 20);
         empWageBuilder.addCompanyEmpWage("Apple", 25, 120, 25);
         empWageBuilder.empWageArray();
     }
 
-    private void empWageArray() {
+    public void empWageArray() {
         for (int i = 0; i < noOfCompany; i++) {
             int totalWage = calculateDailyWage(companyEmpArray[i]);
             System.out.println(companyEmpArray[i]);
         }
     }
 
-    private void addCompanyEmpWage(String companyName, int ratePerHrs, int totalHours, int daysPerMonth) {
+    public void addCompanyEmpWage(String companyName, int ratePerHrs, int totalHours, int daysPerMonth) {
         CompanyEmpWage companyEmpWage = new CompanyEmpWage(companyName, ratePerHrs, totalHours, daysPerMonth);
         companyEmpArray[noOfCompany++] = companyEmpWage;
     }

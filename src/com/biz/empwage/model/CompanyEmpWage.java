@@ -1,10 +1,10 @@
-package com.biz.empwage;
+package com.biz.empwage.model;
 
 public class CompanyEmpWage {
     String compName;
-    int RATE_PER_HOUR;
-    int MAX_WORKING_HOURS;
-    int workingDayInMonth;
+    public int RATE_PER_HOUR;
+    public int MAX_WORKING_HOURS;
+   public int workingDayInMonth;
 
     public CompanyEmpWage(String compName, int RATE_PER_HOUR, int MAX_WORKING_HOURS, int workingDayInMonth) {
         this.compName = compName;
