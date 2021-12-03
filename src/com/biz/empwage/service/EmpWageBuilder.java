@@ -3,6 +3,8 @@ package com.biz.empwage.service;
 import com.biz.empwage.interface1.IEmployeeWage;
 import com.biz.empwage.model.CompanyEmpWage;
 
+import java.util.ArrayList;
+
 public class EmpWageBuilder implements IEmployeeWage {
 
     int status;
@@ -13,8 +15,8 @@ public class EmpWageBuilder implements IEmployeeWage {
     int totalMonthlyWage = 0;
     int totalWorkingHours = 0;
     int totalEmployeeWage;
-    CompanyEmpWage[] companyEmpArray = new CompanyEmpWage[5];
-    int noOfCompany = 0;
+    //CompanyEmpWage[] companyEmpArray = new CompanyEmpWage[5];
+    ArrayList <CompanyEmpWage> empCompanyArraylist=new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -26,15 +28,15 @@ public class EmpWageBuilder implements IEmployeeWage {
     }
 
     public void empWageArray() {
-        for (int i = 0; i < noOfCompany; i++) {
-            int totalWage = calculateDailyWage(companyEmpArray[i]);
-            System.out.println(companyEmpArray[i]);
+        for (int i = 0; i < empCompanyArraylist.size(); i++) {
+            int totalWage = calculateDailyWage(empCompanyArraylist.get(i));
+            empCompanyArraylist.get(totalWage);
         }
     }
 
     public void addCompanyEmpWage(String companyName, int ratePerHrs, int totalHours, int daysPerMonth) {
         CompanyEmpWage companyEmpWage = new CompanyEmpWage(companyName, ratePerHrs, totalHours, daysPerMonth);
-        companyEmpArray[noOfCompany++] = companyEmpWage;
+        empCompanyArraylist.add(companyEmpWage);
     }
 
     //Check whether the employee is present or not
