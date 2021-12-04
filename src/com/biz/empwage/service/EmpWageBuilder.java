@@ -1,6 +1,8 @@
 package com.biz.empwage.service;
+
 import com.biz.empwage.interface1.IEmployeeWage;
 import com.biz.empwage.model.CompanyEmpWage;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,8 +15,7 @@ public class EmpWageBuilder implements IEmployeeWage {
     int totalMonthlyWage = 0;
     int totalWorkingHours = 0;
     ArrayList<CompanyEmpWage> empCompanyArraylist = new ArrayList<>();
-    HashMap<String,CompanyEmpWage> empWageHashMap=new HashMap<>();
-
+    HashMap<String, CompanyEmpWage> empWageHashMap = new HashMap<>();
 
     public static void main(String[] args) {
 
@@ -24,6 +25,8 @@ public class EmpWageBuilder implements IEmployeeWage {
         empWageBuilder.empWageArray();
         empWageBuilder.getTotalEmpWage("Apple");
     }
+
+    //print the data stored in the list
     public void empWageArray() {
         for (int i = 0; i < empCompanyArraylist.size(); i++) {
             CompanyEmpWage totalWage = calculateDailyWage(empCompanyArraylist.get(i));
@@ -31,18 +34,20 @@ public class EmpWageBuilder implements IEmployeeWage {
         }
     }
 
+    // get the employee wage queried by name
     @Override
     public void getTotalEmpWage(String apple) {
-        System.out.println("Monthly Employee wage for the Company "+apple+" is :"+empWageHashMap.get(apple).monthlyEmpWage);
+        System.out.println("Monthly Employee wage for the Company " + apple + " is :" + empWageHashMap.get(apple).monthlyEmpWage);
     }
 
+    //Add the data in the list and HashMap
     public void addCompanyEmpWage(String companyName, int ratePerHrs, int totalHours, int daysPerMonth) {
         CompanyEmpWage companyEmpWage = new CompanyEmpWage(companyName, ratePerHrs, totalHours, daysPerMonth);
         empCompanyArraylist.add(companyEmpWage);
-        empWageHashMap.put(companyName,companyEmpWage);
+        empWageHashMap.put(companyName, companyEmpWage);
     }
 
-    //Calculated Employ wage
+    //Calculated Employ wage and return object
     private CompanyEmpWage calculateDailyWage(CompanyEmpWage companyEmpWage) {
         int day = 0;
         int index = 0;
@@ -66,7 +71,7 @@ public class EmpWageBuilder implements IEmployeeWage {
             totalMonthlyWage += empWage;
             day++;
         }
-        companyEmpWage.monthlyEmpWage=totalMonthlyWage;
+        companyEmpWage.monthlyEmpWage = totalMonthlyWage;
         return companyEmpWage;
     }
 
