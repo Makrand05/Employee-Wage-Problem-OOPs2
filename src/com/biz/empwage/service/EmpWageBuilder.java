@@ -2,6 +2,7 @@ package com.biz.empwage.service;
 import com.biz.empwage.interface1.IEmployeeWage;
 import com.biz.empwage.model.CompanyEmpWage;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class EmpWageBuilder implements IEmployeeWage {
 
@@ -12,6 +13,7 @@ public class EmpWageBuilder implements IEmployeeWage {
     int totalMonthlyWage = 0;
     int totalWorkingHours = 0;
     ArrayList<CompanyEmpWage> empCompanyArraylist = new ArrayList<>();
+    HashMap<String,CompanyEmpWage> empWageHashMap=new HashMap<>();
 
 
     public static void main(String[] args) {
@@ -20,7 +22,7 @@ public class EmpWageBuilder implements IEmployeeWage {
         empWageBuilder.addCompanyEmpWage("ABC", 20, 100, 20);
         empWageBuilder.addCompanyEmpWage("Apple", 25, 120, 25);
         empWageBuilder.empWageArray();
-
+        empWageBuilder.getTotalEmpWage("Apple");
     }
     public void empWageArray() {
         for (int i = 0; i < empCompanyArraylist.size(); i++) {
@@ -29,9 +31,15 @@ public class EmpWageBuilder implements IEmployeeWage {
         }
     }
 
+    @Override
+    public void getTotalEmpWage(String apple) {
+        System.out.println("Monthly Employee wage for the Company "+apple+" is :"+empWageHashMap.get(apple).monthlyEmpWage);
+    }
+
     public void addCompanyEmpWage(String companyName, int ratePerHrs, int totalHours, int daysPerMonth) {
         CompanyEmpWage companyEmpWage = new CompanyEmpWage(companyName, ratePerHrs, totalHours, daysPerMonth);
         empCompanyArraylist.add(companyEmpWage);
+        empWageHashMap.put(companyName,companyEmpWage);
     }
 
     //Calculated Employ wage

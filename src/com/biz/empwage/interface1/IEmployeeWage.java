@@ -4,4 +4,6 @@ public interface IEmployeeWage {
     void addCompanyEmpWage(String companyName, int ratePerHrs, int totalHours, int daysPerMonth);
 
     void empWageArray();
+
+    void getTotalEmpWage(String apple);
 }
